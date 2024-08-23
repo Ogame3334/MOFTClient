@@ -13,7 +13,7 @@ namespace ogm
 		~WSClient();
 
 		//bool connect(const IPv4Address& ip, uint16 port);
-		bool connect(const URLView url, const StringView text);
+		void connect(const URLView url, const StringView text);
 	private:
 		class WSClientDetail;
 

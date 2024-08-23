@@ -20,7 +20,7 @@ namespace ogm
 		~WSClientDetail();
 
 		//bool connect(const IPv4Address& ip, uint16 port);
-		bool connect(const URLView url, const StringView text);
+		void connect(const URLView url, const StringView text);
 	private:
 		void fail(beast::error_code ec, char const* what);
 		void onResolve(beast::error_code ec, tcp::resolver::results_type results);
@@ -36,5 +36,6 @@ namespace ogm
 		beast::flat_buffer m_buffer;
 		std::string m_host;
 		std::string m_text;
+		AsyncTask<net::io_context::count_type> task;
 	};
 }

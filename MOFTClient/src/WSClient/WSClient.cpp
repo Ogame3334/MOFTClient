@@ -12,7 +12,7 @@ namespace ogm
 	//{
 	//	return pImpl->connect(ip, port);
 	//}
-	bool WSClient::connect(const URLView url, const StringView text) {
-		return pImpl->connect(url, text);
+	void WSClient::connect(const URLView url, const StringView text) {
+		pImpl->connect(url, text);
 	}
 }
