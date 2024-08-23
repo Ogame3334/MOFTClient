@@ -1,6 +1,7 @@
 ﻿#include <Siv3D.hpp>
 
-void Main() {
+void Main()
+{
 	while (System::Update()) {
 
 	}
