@@ -12,8 +12,23 @@ namespace ogm
 
 		~WSClient();
 
-		//bool connect(const IPv4Address& ip, uint16 port);
-		void connect(const URLView url, const StringView text);
+		bool open(const StringView host, const StringView endpoint);
+		bool open(const URLView url);
+
+		void onOpen(const std::function<void()>& callback);
+		void onClose(const std::function<void()>& callback);
+		void onError(const std::function<void()>& callback);
+		void onMessage(const std::function<void(const StringView)>& callback);
+
+		[[nodiscard]] bool isOpen() const;
+
+		void close();
+
+		bool send(const StringView message);
+
+		[[nodiscard]] String host() const;
+
+		[[nodiscard]] bool hasError() const;
 	private:
 		class WSClientDetail;
 
