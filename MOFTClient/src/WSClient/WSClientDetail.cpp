@@ -20,7 +20,7 @@ namespace ogm
 
 		m_resolver.async_resolve(
 			m_host.toUTF8(),
-			"443",
+			"8081",
 			beast::bind_front_handler(
 				&WSClientDetail::on_resolve,
 				this

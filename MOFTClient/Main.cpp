@@ -3,7 +3,7 @@
 
 void Main() {
 	ogm::WSClient client;
-	client.open(U"api-realtime-sandbox.p2pquake.net", U"/v2/ws");
+	client.open(U"localhost", U"/");
 
 	while (System::Update())
 	{

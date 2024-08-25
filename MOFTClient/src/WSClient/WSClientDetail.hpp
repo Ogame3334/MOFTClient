@@ -10,8 +10,7 @@ namespace ogm
 	namespace beast = boost::beast;
 	namespace http = boost::beast::http;
 	namespace websocket = boost::beast::websocket;
-	namespace net = boost::asio;]
-	namespace ssl = boost::asio::ssl;
+	namespace net = boost::asio;
 	using tcp = boost::asio::ip::tcp;
 
 	class WSClient::WSClientDetail
