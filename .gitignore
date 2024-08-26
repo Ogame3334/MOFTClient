@@ -414,4 +414,5 @@ gmon.out
 #**/App/engine
 #**/App/dll
 
-**/[Tt]hird[Pp]arty
+
+[Tt]hird[Pp]arty
