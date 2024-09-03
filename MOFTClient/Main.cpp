@@ -1,5 +1,6 @@
 ﻿#include <Siv3D.hpp>
 #include "include/WSClient.hpp"
+#include <boost/core/empty_value.hpp>
 
 void Main() {
 	ogm::WSClient client;

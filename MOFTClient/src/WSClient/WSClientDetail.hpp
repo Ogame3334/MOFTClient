@@ -2,8 +2,9 @@
 
 #include "../../include/WSClient.hpp"
 #include <boost/beast/core.hpp>
+#include <boost/beast/ssl.hpp>
 #include <boost/beast/websocket.hpp>
-#include <boost/asio/ip/tcp.hpp>
+#include <boost/beast/websocket/ssl.hpp>
 
 namespace ogm
 {
@@ -11,6 +12,7 @@ namespace ogm
 	namespace http = boost::beast::http;
 	namespace websocket = boost::beast::websocket;
 	namespace net = boost::asio;
+	namespace ssl = boost::asio::ssl;
 	using tcp = boost::asio::ip::tcp;
 
 	class WSClient::WSClientDetail
@@ -45,15 +47,17 @@ namespace ogm
 		void on_resolve(beast::error_code ec, tcp::resolver::results_type results);
 		void on_connect(beast::error_code ec, tcp::resolver::results_type::endpoint_type ep);
 		void on_handshake(beast::error_code ec);
+		void on_ssl_handshake(beast::error_code ec);
 		void on_write(beast::error_code ec, std::size_t bytes_transferred);
 		void on_read(beast::error_code ec, std::size_t bytestransferred);
 		void on_close(beast::error_code ec);
 	private:
 		net::io_context m_ioc;
+		ssl::context m_sslc;
 		AsyncTask<void> m_task;
 
 		tcp::resolver m_resolver;
-		websocket::stream<beast::tcp_stream> m_ws;
+		websocket::stream<beast::ssl_stream<beast::tcp_stream>> m_ws;
 		beast::flat_buffer m_buffer;
 		String m_host;
 		String m_endpoint;
